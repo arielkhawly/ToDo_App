@@ -3,7 +3,7 @@
 
 <head>
     <title>To Do!</title>
-    <link rel="stylesheet" href='style.css' />
+    <link rel="stylesheet" type='text/css' href='style.css' />
 </head>
 
 <body>
@@ -11,11 +11,13 @@
     <main>
         <!-- add a header image  -->
         <div class='form'>
-            <form>
+            <form id='form'>
                 <input id='note-title' type='text' placeholder="add a title, kid">
                 <input id='note-body' type='text' placeholder="What do you need to do?">
+                <div id='form-buttons'>
                 <button id='post-button'type='submit'>Post</button> 
-                <button id='close-button'>Close</button>
+                <button id='close-button'type='button'>Close</button>
+            </div>
             </form>
         </div>
         <div id='all-notes'>
