@@ -18,7 +18,7 @@ class App {
 
         });
         this.$closeButton.addEventListener('click', event => {
-            this.closeForm();
+            this.closeForm(); 
         });
         this.$postButton.addEventListener('click', event => {
             console.log('clicked!')
@@ -29,7 +29,7 @@ class App {
             const hasNote = title || body;
             if (hasNote) {
                 // this will add the note, and we destructure the newNote object for easier access
-                this.addNote({ title, text })
+                this.addNote({title, body})
 
             }
         });
@@ -52,8 +52,11 @@ class App {
         const newNote = {
             title: note.title,
             body: note.body,
-            color: 'pink'
+            color: 'pink',
+            id: this.notes.length > 0 ? this.notes[this.notes.length - 1].id + 1 : 1
         }
+        this.notes = [...this.notes, newNote] // this spreads the array and allows the id to increment 
+        console.log(this.notes)
     }
 }
 new App()
