@@ -2,11 +2,13 @@ class App {
     constructor() {
         this.notes = [];
 
+        this.$placeholderImage = document.querySelector('#placeholder')
         this.$form = document.querySelector('#form');
         this.$noteTitle = document.querySelector('#note-title');
         this.$noteBody = document.querySelector('#note-body');
         this.$postButton = document.querySelector('#post-button')
         this.$closeButton = document.querySelector('#close-button')
+
 
         this.addEventListeners();
     }
@@ -53,10 +55,8 @@ class App {
         this.displayNotes()
     }
     displayNotes() {
-        if (this.notes.length > 0) {
-        let $placeholderImage = document.querySelector('img')
-        $placeholderImage.style.display = 'none'; // this removes the placeholder image
+        let hasNotes = this.notes.length > 0;
+        this.$placeholderImage.style.display = hasNotes ?  'none' :  'flex';
         }
-    }
 }
 new App()
