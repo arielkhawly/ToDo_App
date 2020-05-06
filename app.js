@@ -11,41 +11,37 @@ class App {
         this.addEventListeners();
     }
     addEventListeners() {
-       this.$postButton.addEventListener('click', event => {
+        this.$postButton.addEventListener('click', event => {
             this.openForm();
 
         });
         this.$closeButton.addEventListener('click', event => {
-            this.closeForm(); 
+            this.closeForm();
         });
         this.$postButton.addEventListener('click', event => {
-            console.log('clicked!')
-            let $placeholderImage = document.querySelector('img')
-            $placeholderImage.style.display = 'none'; // this removes the placeholder image
             event.preventDefault();
             const title = this.$noteTitle.value;
             const body = this.$noteBody.value;
             const hasNote = title || body;
             if (hasNote) {
                 // this will add the note, and we destructure the newNote object for easier access
-                this.addNote({title, body})
-
+                this.addNote({ title, body })
             }
         });
     }
-
+    // opens the note form
     openForm() {
-        console.log('form open')
         this.$form.classList.add('form-open')
         this.$noteTitle.style.display = 'block';
         this.$noteBody.style.display = 'block';
     }
+    //closes the note form
     closeForm() {
         this.$form.classList.remove('form-open')
         this.$noteTitle.style.display = 'none';
         this.$noteBody.style.display = 'none'
-        console.log('form closed')
     }
+    // stores the new note in an object
     addNote(note) {
         const newNote = {
             title: note.title,
@@ -54,7 +50,13 @@ class App {
             id: this.notes.length > 0 ? this.notes[this.notes.length - 1].id + 1 : 1
         }
         this.notes = [...this.notes, newNote] // this spreads the array and allows the id to increment 
-        console.log(this.notes)
+        this.displayNotes()
+    }
+    displayNotes() {
+        if (this.notes.length > 0) {
+        let $placeholderImage = document.querySelector('img')
+        $placeholderImage.style.display = 'none'; // this removes the placeholder image
+        }
     }
 }
 new App()
