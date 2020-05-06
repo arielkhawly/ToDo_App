@@ -8,8 +8,6 @@ class App {
         this.$postButton = document.querySelector('#post-button')
         this.$closeButton = document.querySelector('#close-button')
 
-
-
         this.addEventListeners();
     }
     addEventListeners() {
@@ -22,7 +20,8 @@ class App {
         });
         this.$postButton.addEventListener('click', event => {
             console.log('clicked!')
-
+            let $placeholderImage = document.querySelector('img')
+            $placeholderImage.style.display = 'none';
             event.preventDefault();
             const title = this.$noteTitle.value;
             const body = this.$noteBody.value;
