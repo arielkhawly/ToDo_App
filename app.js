@@ -21,7 +21,7 @@ class App {
         this.$postButton.addEventListener('click', event => {
             console.log('clicked!')
             let $placeholderImage = document.querySelector('img')
-            $placeholderImage.style.display = 'none';
+            $placeholderImage.style.display = 'none'; // this removes the placeholder image
             event.preventDefault();
             const title = this.$noteTitle.value;
             const body = this.$noteBody.value;
@@ -44,7 +44,6 @@ class App {
         this.$form.classList.remove('form-open')
         this.$noteTitle.style.display = 'none';
         this.$noteBody.style.display = 'none'
-        this.$closeButton.style.display = 'none';
         console.log('form closed')
     }
     addNote(note) {
