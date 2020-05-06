@@ -1,7 +1,7 @@
 class App {
     constructor() {
         this.notes = [];
-
+        this.$notes = document.querySelector('#all-notes')
         this.$placeholderImage = document.querySelector('#placeholder')
         this.$form = document.querySelector('#form');
         this.$noteTitle = document.querySelector('#note-title');
@@ -56,7 +56,17 @@ class App {
     }
     displayNotes() {
         let hasNotes = this.notes.length > 0;
-        this.$placeholderImage.style.display = hasNotes ?  'none' :  'flex';
-        }
+        this.$placeholderImage.style.display = hasNotes ? 'none' : 'flex';
+        this.$notes.innerHTML = this.notes.map(note => `
+        <div style='background: ${note.color}'>
+        <div> Title: ${note.title} </div>
+        <div> Get Done: ${note.body} </div>
+        <div class='toolbar'>
+        <button>Edit</button>
+        <button>Delete</button>
+        </div>
+        `
+        )
+    }
 }
 new App()
